@@ -13,6 +13,7 @@ public class mergesort {
         int[] dataset = new int[datasize];
         int temp;
         for(int i = 0; i < datasize; i++){
+        //    temp = rand.nextInt(1000000);
             temp = rand.nextInt(1000000);
             dataset[i] = temp;
         }
@@ -110,7 +111,7 @@ public class mergesort {
         int n = last - first + 1;
         int temp = 0;
         for (int i = 1; i < n; i++){
-            for(int j = i; j > 0; j--){
+            for(int j = first + i; j > first; j--){  // buggy code for(int j = i; j > 0; j--), this buggy code only works when first == 0;
                 if (array[j] < array[j-1]) {
                     temp = array[j-1];
                     array[j-1] = array[j];
@@ -121,7 +122,7 @@ public class mergesort {
     }
 
     //    Unit test for data generator + Insertionsort. Test passed.
-//
+
 //    public static void main(String[] args) {
 //        Scanner sc = new Scanner(System.in);
 //        System.out.println("Please enter data size: ");
@@ -152,21 +153,21 @@ public class mergesort {
     }
 
 //  Unit test for data generator + mergeSortModified. Test unpassed.
-//
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Please enter data size: ");
-//        datasize  = sc.nextInt();
-//        int [] dataset = generateData(datasize);
-//        for (int i = 0; i < datasize; i++){
-//            System.out.print(dataset[i] + " ");
-//        }
-//        System.out.println("\nSorted array: ");
-//        mergeSortModified(dataset,0,datasize-1,2);
-//        for (int i = 0; i < datasize; i++){
-//            System.out.print(dataset[i] + " ");
-//        }
-//    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter data size: ");
+        datasize  = sc.nextInt();
+        int [] dataset = generateData(datasize);
+        for (int i = 0; i < datasize; i++){
+            System.out.print(dataset[i] + " ");
+        }
+        System.out.println("\nSorted array: ");
+        mergeSortModified(dataset,0,datasize-1,2);
+        for (int i = 0; i < datasize; i++){
+            System.out.print(dataset[i] + " ");
+        }
+    }
 
 
 
